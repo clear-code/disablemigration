@@ -2,12 +2,28 @@
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 <script type="application/x-javascript"><![CDATA[
-eval('MigrationWizard.init = ' + 
-	MigrationWizard.init.toSource().replace(
-		'if (this._autoMigrate) {',
-		'$& window.minimize(); window.setTimeout("window.close();", 0); return;'
-	)
-);
+switch (location.href)
+{
+	// Firefox
+	case 'chrome://browser/content/migration/migration.xul':
+		eval('MigrationWizard.init = ' + 
+			MigrationWizard.init.toSource().replace(
+				'if (this._autoMigrate) {',
+				'$& window.minimize(); window.setTimeout("window.close();", 0); return;'
+			)
+		);
+		break;
+
+	// Thunderbird
+	case 'chrome://messenger/content/migration/migration.xul':
+		eval('MigrationWizard.init = ' + 
+			MigrationWizard.init.toSource().replace(
+				'if ("arguments" in window) {',
+				'$& window.minimize(); window.setTimeout("window.close();", 0); return;'
+			)
+		);
+		break;
+}
 ]]></script>
 
 </overlay>
