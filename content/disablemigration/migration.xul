@@ -2,6 +2,8 @@
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
 <script type="application/x-javascript"><![CDATA[
+window.resizeTo(1, 1);
+window.moveTo(-10000, -10000);
 switch (location.href)
 {
 	// Firefox
@@ -9,7 +11,7 @@ switch (location.href)
 		eval('MigrationWizard.init = ' + 
 			MigrationWizard.init.toSource().replace(
 				'if (this._autoMigrate) {',
-				'$& window.minimize(); window.setTimeout("window.close();", 0); return;'
+				'$& window.setTimeout("window.close();", 0); return;'
 			)
 		);
 		break;
@@ -19,7 +21,7 @@ switch (location.href)
 		eval('MigrationWizard.init = ' + 
 			MigrationWizard.init.toSource().replace(
 				'if ("arguments" in window) {',
-				'$& window.minimize(); window.setTimeout("window.close();", 0); return;'
+				'$& window.setTimeout("window.close();", 0); return;'
 			)
 		);
 		break;
