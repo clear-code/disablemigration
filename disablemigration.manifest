@@ -1,3 +1,7 @@
 content	disablemigration	jar:disablemigration.jar!/content/disablemigration/
+
 overlay	chrome://browser/content/migration/migration.xul	chrome://disablemigration/content/migration.xul
 overlay	chrome://messenger/content/migration/migration.xul	chrome://disablemigration/content/migration.xul
+
+overlay	chrome://browser/content/browser.xul	chrome://disablemigration/content/browser.xul
+overlay	chrome://messenger/content/messenger.xul	chrome://disablemigration/content/browser.xul

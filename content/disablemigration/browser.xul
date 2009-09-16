@@ -2,6 +2,9 @@
 <overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 <script type="application/x-javascript" src="disablemigration.js"/>
 <script type="application/x-javascript"><![CDATA[
-DisableMigration.override();
+window.addEventListener('load', function() {
+	window.removeEventListener('load', arguments.callee, false);
+	DisableMigration.doAutoMigration();
+}, false);
 ]]></script>
 </overlay>
